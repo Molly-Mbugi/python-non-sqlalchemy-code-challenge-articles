@@ -5,7 +5,7 @@ class Author:
             self._name = name
             self._articles = []
         else:
-            raise ValueError("Names must be longer than 0 characters")
+            print ("Names must be longer than 0 characters")
 
     @property
     def name(self):
@@ -45,12 +45,12 @@ class Magazine:
         if isinstance(name, str) and 2 <= len(name) <= 16:
             self._name = name
         else:
-            raise ValueError("Name must be a string between 2 and 16 characters")
+            print ("Name must be a string between 2 and 16 characters")
         if isinstance(category, str) and len(category) > 0:
             self._category = category
             self._articles = []
         else:
-            raise ValueError("Names must be longer than 0 characters")
+            print("Names must be longer than 0 characters")
         Magazine.all_magazines.append(self)
 
     @property
@@ -62,7 +62,7 @@ class Magazine:
         if isinstance(new_name, str) and 2 <= len(new_name) <= 16:
             self._name = new_name
         else:
-            raise ValueError("Name must be a string between 2 and 16 characters")
+            print("Name must be a string between 2 and 16 characters")
 
     @property
     def category(self):
@@ -74,7 +74,7 @@ class Magazine:
         if isinstance(new_category, str) and len(new_category) > 0:
             self._category = new_category
         else:
-            raise ValueError("Category must be a non-empty string")
+            print("Category must be a non-empty string")
 
     def articles(self):
         return self._articles
@@ -117,11 +117,11 @@ class Article:
     def __init__(self, author, magazine, title):
         # Check instance 
         if not isinstance(author, Author):
-            raise ValueError("Author must be an instance of Author")
+            print("Author must be an instance of Author")
         if not isinstance(magazine, Magazine):
-            raise ValueError("Magazine must be an instance of Magazine")
+            print("Magazine must be an instance of Magazine")
         if not isinstance(title, str) or not (5 <= len(title) <= 50):
-            raise ValueError("Title must be a string between 5 and 50 characters")
+            print("Title must be a string between 5 and 50 characters")
         self._author = author
         self._magazine = magazine
         self._title = title
@@ -146,7 +146,7 @@ class Article:
             self._author = new_author
             new_author.articles().append(self)
         else:
-            raise ValueError("Author must be an instance of Author")
+            print("Author must be an instance of Author")
 
     @property
     def magazine(self):
@@ -161,7 +161,7 @@ class Article:
             self._magazine = new_magazine
             new_magazine.articles().append(self)
         else:
-            raise ValueError("Magazine must be an instance of Magazine")
+            print("Magazine must be an instance of Magazine")
 
 
 
