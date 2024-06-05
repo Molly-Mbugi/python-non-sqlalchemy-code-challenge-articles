@@ -9,9 +9,12 @@ class Author:
 
     @property
     def name(self):
+        
         return self._name
 
     def articles(self):
+
+         
         return self._articles
 
     def magazines(self):
@@ -22,10 +25,12 @@ class Author:
         return magazines_list if magazines_list else None
 
     def add_article(self, magazine, title):
+          # Create a new article and add it to the author's list of articles
         new_article = Article(self, magazine, title)
         return new_article
 
     def topic_areas(self):
+        #  list of unique topic areas
         if not self._articles:
             return None
         topic_areas_set = set(article.magazine.category for article in self._articles)
@@ -36,6 +41,7 @@ class Magazine:
     all_magazines = []
 
     def __init__(self, name, category):
+         # Check if the name is a string between 2 and 16 char
         if isinstance(name, str) and 2 <= len(name) <= 16:
             self._name = name
         else:
@@ -64,6 +70,7 @@ class Magazine:
 
     @category.setter
     def category(self, new_category):
+        # Set a new category for the magazine
         if isinstance(new_category, str) and len(new_category) > 0:
             self._category = new_category
         else:
@@ -82,6 +89,7 @@ class Magazine:
         return [article.title for article in self._articles]
 
     def contributing_authors(self):
+         # list of authors who have written more than 2 articles for the magazine
         if not self._articles:
             return None
         
@@ -107,6 +115,7 @@ class Article:
     all = []
 
     def __init__(self, author, magazine, title):
+        # Check instance 
         if not isinstance(author, Author):
             raise ValueError("Author must be an instance of Author")
         if not isinstance(magazine, Magazine):
@@ -130,6 +139,7 @@ class Article:
 
     @author.setter
     def author(self, new_author):
+        # Set a new author for the article
         if isinstance(new_author, Author):
             if self in self._author.articles():
                 self._author.articles().remove(self)
@@ -144,6 +154,7 @@ class Article:
 
     @magazine.setter
     def magazine(self, new_magazine):
+         # Set a new magazine
         if isinstance(new_magazine, Magazine):
             if self in self._magazine.articles():
                 self._magazine.articles().remove(self)
