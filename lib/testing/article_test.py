@@ -114,3 +114,13 @@ class TestArticle:
         assert len(Article.all) == 2
         assert article_1 in Article.all
         assert article_2 in Article.all
+    def test_title_is_immutable_str(self):
+     """title is an immutable string"""
+    author = Author("Carry Bradshaw")
+    magazine = Magazine("Vogue", "Fashion")
+    article_1 = Article(author, magazine, "How to wear a tutu with style")
+
+    assert isinstance(article_1.title, str)
+
+    
+    

@@ -166,3 +166,13 @@ class TestAuthor:
         assert "Fashion" in author_1.topic_areas()
         assert "Architecture" in author_1.topic_areas()
         assert author_2.topic_areas() is None
+    def test_name_is_immutable_string(self):
+     """author name is of type str and cannot change"""
+    author_1 = Author("Carry Bradshaw")
+    author_2 = Author("Nathaniel Hawthorne")
+
+    assert isinstance(author_1.name, str)
+    assert isinstance(author_2.name, str)
+
+   
+
